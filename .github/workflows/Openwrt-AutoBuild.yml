@@ -190,7 +190,7 @@ jobs:
           find openwrt/bin/targets/ -name "*factory*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*vmdk*" | xargs -i mv -f {} ./Firmware/
           cd ./Firmware
-          tar -czvf ../${{matrix.target}}_${{env.DATE}}.tar.gz ./
+          tar -czvf ../${{matrix.target}}_${{env.DATE}}.tar.gz *
 
       - name: Upload Packages to release
         if: env.UPLOAD_PACKAGES_DIR == 'true' && env.UPLOAD_TO_REALEASE == 'true' && !cancelled() &&  steps.compile.outputs.status == 'success'
