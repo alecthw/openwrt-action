@@ -57,6 +57,7 @@ do_common() {
     if [ -d "package/lean/luci-app-vlmcsd" ]; then
         cp -f ../defconfig/etc/config/vlmcsd package/lean/luci-app-vlmcsd/root/etc/config/vlmcsd
     fi
+    # --------------- mini
 }
 
 do_lienol_common() {

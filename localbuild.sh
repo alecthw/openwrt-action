@@ -78,17 +78,7 @@ do_prepare() {
     else
         cd ${CUR_PATH}/${code_dir}
 
-        echo "Info: Clean feeds..."
-        ./scripts/feeds clean -a
-
-        echo "Info: Clean custom package..."
-        git clean -fd
-        rm -rf package/luci-theme-argon-jerrykuku
-        rm -rf package/luci-app-jd-dailybonus
-        rm -rf package/luci-app-serverchan
-        rm -rf package/luci-app-smartdns
-        rm -rf package/luci-app-tcpdump
-
+        # clean package build which has bee changed by script
         echo "Info: Clean build has custom config..."
         clean_package package/base-files
 
@@ -127,6 +117,20 @@ do_prepare() {
         if [ -d "package/lean/luci-app-vlmcsd" ]; then
             clean_package package/lean/luci-app-vlmcsd
         fi
+        # --------------- mini
+
+        # clean feeds
+        echo "Info: Clean feeds..."
+        ./scripts/feeds clean -a
+
+        # clean code
+        echo "Info: Clean custom package..."
+        git clean -fd
+        rm -rf package/luci-theme-argon-jerrykuku
+        rm -rf package/luci-app-jd-dailybonus
+        rm -rf package/luci-app-serverchan
+        rm -rf package/luci-app-smartdns
+        rm -rf package/luci-app-tcpdump
 
         echo "Info: Update code..."
         force_pull

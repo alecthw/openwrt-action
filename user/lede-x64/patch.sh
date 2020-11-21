@@ -5,6 +5,7 @@ echo "Execute custom patch.sh"
 # add custom packages
 git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
 
+# --------------- mini
 # xiaorouji lienol
 rm -rf package/lean/luci-app-guest-wifi
 #rm -rf package/lean/luci-app-kodexplorer
@@ -28,3 +29,4 @@ rm -rf package/lean/trojan
 #rm -rf package/lean/v2ray
 #rm -rf package/lean/v2ray-plugin
 #rm -rf package/lean/verysync
+# --------------- mini
