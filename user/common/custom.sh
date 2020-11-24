@@ -9,61 +9,63 @@ echo "source=${source}"
 
 do_common() {
     # copy default config
-    cp -f ../defconfig/zzz-extra-settings package/base-files/files/etc/uci-defaults/zzz-extra-settings
+    if [ -d "../defconfig" ]; then
+        cp -f ../defconfig/zzz-extra-settings package/base-files/files/etc/uci-defaults/zzz-extra-settings
 
-    if [ -d "package/lean/luci-app-adbyby-plus" ]; then
-        cp -f ../defconfig/etc/config/adbyby package/lean/luci-app-adbyby-plus/root/etc/config/adbyby
-    fi
-
-    if [ -d "package/feeds/diy1/luci-app-passwall" ]; then
-        cp -f ../defconfig/etc/config/passwall package/feeds/diy1/luci-app-passwall/root/etc/config/passwall
-        cp -rf ../defconfig/usr/share/passwall/* package/feeds/diy1/luci-app-passwall/root/usr/share/passwall/
-        chmod 775 package/feeds/diy1/luci-app-passwall/root/usr/share/passwall/curl_ping.sh
-        chmod 775 package/feeds/diy1/luci-app-passwall/root/usr/share/passwall/test_node.sh
-    fi
-
-    if [ -d "package/feeds/luci/luci-app-smartdns" ]; then
-        mkdir -p package/feeds/luci/luci-app-smartdns/root/etc/config
-        mkdir -p package/feeds/luci/luci-app-smartdns/root/etc/smartdns
-        cp -f ../defconfig/etc/config/smartdns package/feeds/luci/luci-app-smartdns/root/etc/config/smartdns
-        cp -rf ../defconfig/etc/smartdns/* package/feeds/luci/luci-app-smartdns/root/etc/smartdns/
-        if [ -f "package/feeds/luci/luci-app-smartdns/root/etc/smartdns/anti-ad.sh" ]; then
-            chmod 755 package/feeds/luci/luci-app-smartdns/root/etc/smartdns/anti-ad.sh
+        if [ -d "package/lean/luci-app-adbyby-plus" ]; then
+            cp -f ../defconfig/etc/config/adbyby package/lean/luci-app-adbyby-plus/root/etc/config/adbyby
         fi
-    fi
-    if [ -d "package/luci-app-smartdns" ]; then
-        mkdir -p package/luci-app-smartdns/root/etc/config
-        mkdir -p package/luci-app-smartdns/root/etc/smartdns
-        cp -f ../defconfig/etc/config/smartdns package/luci-app-smartdns/root/etc/config/smartdns
-        cp -rf ../defconfig/etc/smartdns/* package/luci-app-smartdns/root/etc/smartdns/
-        if [ -f "package/luci-app-smartdns/root/etc/smartdns/anti-ad.sh" ]; then
-            chmod 755 package/luci-app-smartdns/root/etc/smartdns/anti-ad.sh
+
+        if [ -d "package/feeds/diy1/luci-app-passwall" ]; then
+            cp -f ../defconfig/etc/config/passwall package/feeds/diy1/luci-app-passwall/root/etc/config/passwall
+            cp -rf ../defconfig/usr/share/passwall/* package/feeds/diy1/luci-app-passwall/root/usr/share/passwall/
+            chmod 775 package/feeds/diy1/luci-app-passwall/root/usr/share/passwall/curl_ping.sh
+            chmod 775 package/feeds/diy1/luci-app-passwall/root/usr/share/passwall/test_node.sh
         fi
-    fi
 
-    if [ -d "package/feeds/openclash/luci-app-openclash" ]; then
-        cp -f ../defconfig/etc/config/openclash package/feeds/openclash/luci-app-openclash/root/etc/config/openclash
-    fi
+        if [ -d "package/feeds/luci/luci-app-smartdns" ]; then
+            mkdir -p package/feeds/luci/luci-app-smartdns/root/etc/config
+            mkdir -p package/feeds/luci/luci-app-smartdns/root/etc/smartdns
+            cp -f ../defconfig/etc/config/smartdns package/feeds/luci/luci-app-smartdns/root/etc/config/smartdns
+            cp -rf ../defconfig/etc/smartdns/* package/feeds/luci/luci-app-smartdns/root/etc/smartdns/
+            if [ -f "package/feeds/luci/luci-app-smartdns/root/etc/smartdns/anti-ad.sh" ]; then
+                chmod 755 package/feeds/luci/luci-app-smartdns/root/etc/smartdns/anti-ad.sh
+            fi
+        fi
+        if [ -d "package/luci-app-smartdns" ]; then
+            mkdir -p package/luci-app-smartdns/root/etc/config
+            mkdir -p package/luci-app-smartdns/root/etc/smartdns
+            cp -f ../defconfig/etc/config/smartdns package/luci-app-smartdns/root/etc/config/smartdns
+            cp -rf ../defconfig/etc/smartdns/* package/luci-app-smartdns/root/etc/smartdns/
+            if [ -f "package/luci-app-smartdns/root/etc/smartdns/anti-ad.sh" ]; then
+                chmod 755 package/luci-app-smartdns/root/etc/smartdns/anti-ad.sh
+            fi
+        fi
 
-    # --------------- mini
-    cp -f ../defconfig/etc/hosts package/base-files/files/etc/hosts
+        if [ -d "package/feeds/openclash/luci-app-openclash" ]; then
+            cp -f ../defconfig/etc/config/openclash package/feeds/openclash/luci-app-openclash/root/etc/config/openclash
+        fi
 
-    if [ -d "package/feeds/n2n/n2n_v2" ]; then
-        cp -f ../defconfig/etc/config/n2n_v2 package/feeds/n2n/n2n_v2/files/n2n_v2.config
-    fi
+        # --------------- mini
+        cp -f ../defconfig/etc/hosts package/base-files/files/etc/hosts
 
-    if [ -d "package/lean/luci-app-sfe" ]; then
-        cp -f ../defconfig/etc/config/sfe package/lean/luci-app-sfe/root/etc/config/sfe
-    fi
+        if [ -d "package/feeds/n2n/n2n_v2" ]; then
+            cp -f ../defconfig/etc/config/n2n_v2 package/feeds/n2n/n2n_v2/files/n2n_v2.config
+        fi
 
-    if [ -d "package/feeds/packages/udpxy" ]; then
-        cp -f ../defconfig/etc/config/udpxy package/feeds/packages/udpxy/files/udpxy.conf
-    fi
+        if [ -d "package/lean/luci-app-sfe" ]; then
+            cp -f ../defconfig/etc/config/sfe package/lean/luci-app-sfe/root/etc/config/sfe
+        fi
 
-    if [ -d "package/lean/luci-app-vlmcsd" ]; then
-        cp -f ../defconfig/etc/config/vlmcsd package/lean/luci-app-vlmcsd/root/etc/config/vlmcsd
+        if [ -d "package/feeds/packages/udpxy" ]; then
+            cp -f ../defconfig/etc/config/udpxy package/feeds/packages/udpxy/files/udpxy.conf
+        fi
+
+        if [ -d "package/lean/luci-app-vlmcsd" ]; then
+            cp -f ../defconfig/etc/config/vlmcsd package/lean/luci-app-vlmcsd/root/etc/config/vlmcsd
+        fi
+        # --------------- mini
     fi
-    # --------------- mini
 }
 
 do_lienol_common() {
