@@ -6,17 +6,7 @@ echo "Execute custom patch.sh"
 git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
 
 # --------------- mini
-# xiaorouji lienol
-rm -rf package/lean/luci-app-guest-wifi
-#rm -rf package/lean/luci-app-kodexplorer
-rm -rf package/lean/luci-app-pppoe-relay
-rm -rf package/lean/luci-app-ramfree
-rm -rf package/lean/luci-app-softethervpn
-
-# xiaorouji obsolete
-#rm -rf package/lean/luci-app-verysync
-
-# xiaorouji package
+# passwall
 #rm -rf package/lean/dns2socks
 #rm -rf package/lean/ipt2socks
 rm -rf package/lean/kcptun
@@ -27,5 +17,4 @@ rm -rf package/lean/microsocks
 rm -rf package/lean/trojan
 #rm -rf package/lean/v2ray
 #rm -rf package/lean/v2ray-plugin
-#rm -rf package/lean/verysync
 # --------------- mini
