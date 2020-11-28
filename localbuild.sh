@@ -241,7 +241,7 @@ do_rm_mini_no_required_pkgs() {
 
         if [[ ${code_dir} =~ "1907" ]]; then
             # for 1907
-            cd ${CUR_PATH}/${code_dir}/package/feeds/diy1
+            cd ${CUR_PATH}/${code_dir}/package/feeds/lienol
             rm -rf luci-app-control-timewol
             rm -rf luci-app-control-webrestriction
             rm -rf luci-app-control-weburl
