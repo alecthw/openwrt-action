@@ -28,6 +28,7 @@ jobs:
         target:
           [
             lienol-main-x64,
+            lienol-1907-x64,
             lede-x64,
           ]
 
