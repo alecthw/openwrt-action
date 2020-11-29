@@ -9,7 +9,7 @@ on:
     paths:
       - "start"
   schedule:
-    - cron: 0 22 * * *
+    - cron: 0 20 * * *
   watch:
     types: [started]
 
@@ -24,6 +24,7 @@ jobs:
     name: Build ${{matrix.target}}
     strategy:
       fail-fast: false
+      max-parallel: 2
       matrix:
         target:
           [
@@ -190,8 +191,6 @@ jobs:
           find openwrt/bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*factory*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*vmdk*" | xargs -i mv -f {} ./Firmware/
-          cd ./Firmware
-          tar -czvf ../${{matrix.target}}_${{env.DATE}}.tar.gz *.vmdk .config
 
       - name: Upload Packages to release
         if: env.UPLOAD_PACKAGES_DIR == 'true' && env.UPLOAD_TO_REALEASE == 'true' && !cancelled() &&  steps.compile.outputs.status == 'success'
@@ -248,16 +247,21 @@ jobs:
           name: OpenWrt_firmware_${{matrix.target}}
           path: ./Firmware/
 
-      - name: Upload to server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SFTP_HOST }}
-          port: ${{ secrets.SFTP_PORT }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          source: "${{matrix.target}}_${{env.DATE}}.tar.gz"
-          target: ${{secrets.SFTP_PATH}}
-          overwrite: true
+      - name: Upload to github private repo
+        env:
+          REPO_URL: https://${{ github.actor }}:${{ secrets.PERSONAL_TOKEN }}@github.com/alecthw/firmware.git
+        run: |
+          rm -rf firmware_repo
+          git clone $REPO_URL firmware_repo
+          cd firmware_repo
+          rm -rf ${{matrix.target}}
+          mkdir -p ${{matrix.target}}
+          cp ../Firmware/*.vmdk ${{matrix.target}}/
+          cp ../Firmware/.config ${{matrix.target}}/
+          git add .
+          git commit -m "Add ${{matrix.target}} on ${{env.DATE}}"
+          git pull
+          git push -f -u origin main
 
       - name: WeChat notification
         if: env.WECHAT_NOTIFICATION == 'true' && !cancelled() && steps.compile.outputs.status == 'success'
