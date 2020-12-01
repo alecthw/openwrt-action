@@ -13,7 +13,8 @@ do_common() {
 }
 
 do_lienol_common() {
-    echo ""
+    # add custom packages
+    svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-ramfree package/luci-app-ramfree
 }
 
 do_lede_common() {
