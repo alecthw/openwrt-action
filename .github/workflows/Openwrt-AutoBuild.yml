@@ -256,7 +256,7 @@ jobs:
           cd firmware_repo
           rm -rf ${{matrix.target}}
           mkdir -p ${{matrix.target}}
-          cp ../Firmware/*.vmdk ${{matrix.target}}/
+          cp ../Firmware/*.vmdk* ${{matrix.target}}/
           cp ../Firmware/.config ${{matrix.target}}/
           git add .
           git commit -m "Add ${{matrix.target}} on ${{env.DATE}}"
