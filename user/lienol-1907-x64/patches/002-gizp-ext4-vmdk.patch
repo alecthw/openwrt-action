@@ -4,7 +4,7 @@
  ifneq ($(CONFIG_TARGET_IMAGES_GZIP),)
    define Image/Build/gzip/ext4
  	$(call Image/Build/gzip,ext4)
-+	$(if $(CONFIG_VMDK_IMAGES),gzip -f9n $(BIN_DIR)/$(IMG_PREFIX)-combined-$(1).vmdk)
++	$(if $(CONFIG_VMDK_IMAGES),gzip -f9n $(BIN_DIR)/$(IMG_PREFIX)-combined-ext4.vmdk)
    endef
    define Image/Build/gzip/squashfs
  	$(call Image/Build/gzip,squashfs)
