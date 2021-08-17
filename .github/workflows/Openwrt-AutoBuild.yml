@@ -85,7 +85,7 @@ jobs:
         run: |
           git clone ${{env.REPO_URL}} -b ${{env.REPO_BRANCH}} openwrt
 
-      - name: Apply Patches
+      - name: Apply patches
         run: |
           echo "Apply patches"
           if [ -n "$(ls -A "user/common/patches" 2>/dev/null)" ]; then
