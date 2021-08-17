@@ -8,7 +8,6 @@ echo "Execute custom custom.sh"
 rm -rf feeds/packages/net/smartdns
 svn co https://github.com/Lienol/openwrt-packages/trunk/net/smartdns feeds/packages/net/smartdns
 
-# duplicate packages in passwall and helloworld
 rm -rf feeds/packages/net/kcptun
 svn co https://github.com/xiaorouji/openwrt-passwall/trunk/kcptun feeds/packages/net/kcptun
 
