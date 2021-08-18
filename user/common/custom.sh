@@ -56,10 +56,6 @@ do_common() {
             cp -f ../defconfig/etc/config/n2n_v2 package/feeds/n2n/n2n_v2/files/n2n_v2.config
         fi
 
-        if [ -d "package/lean/luci-app-sfe" ]; then
-            cp -f ../defconfig/etc/config/sfe package/lean/luci-app-sfe/root/etc/config/sfe
-        fi
-
         if [ -d "package/feeds/packages/udpxy" ]; then
             cp -f ../defconfig/etc/config/udpxy package/feeds/packages/udpxy/files/udpxy.conf
         fi
