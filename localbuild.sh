@@ -74,7 +74,7 @@ do_prepare() {
 
     if [ ! -d "${CUR_PATH}/${code_dir}" ]; then
         echo "Info: Clone code ${REPO_URL} ${REPO_BRANCH}..."
-        git clone --depth=1 ${REPO_URL} -b ${REPO_BRANCH} ${code_dir}
+        git clone ${REPO_URL} -b ${REPO_BRANCH} ${code_dir}
     else
         cd ${CUR_PATH}/${code_dir}
 
