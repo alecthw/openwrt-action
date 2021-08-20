@@ -82,6 +82,10 @@ do_prepare() {
         echo "Info: Clean build has custom config..."
         clean_package package/base-files
 
+        if [ -d "package/feeds/packages/nginx-util" ]; then
+            clean_package package/feeds/packages/nginx-util
+        fi
+
         if [ -d "package/lean/luci-app-adbyby-plus" ]; then
             clean_package package/lean/luci-app-adbyby-plus
         fi
@@ -102,6 +106,10 @@ do_prepare() {
         fi
 
         # --------------- mini
+        if [ -d "package/lean/luci-app-turboacc" ]; then
+            clean_package package/lean/luci-app-turboacc
+        fi
+
         if [ -d "package/feeds/n2n/n2n_v2" ]; then
             clean_package package/feeds/n2n/n2n_v2
         fi
