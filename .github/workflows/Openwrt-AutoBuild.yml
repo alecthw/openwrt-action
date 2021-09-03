@@ -24,7 +24,7 @@ jobs:
     name: Build ${{matrix.target}}
     strategy:
       fail-fast: false
-      max-parallel: 2
+      max-parallel: 3
       matrix:
         target:
           [
@@ -190,6 +190,7 @@ jobs:
           mkdir -p ./Firmware/
           cp -f openwrt/.config ./Firmware/
           find openwrt/bin/targets/ -name "*sysupgrade*bin*" | xargs -i mv -f {} ./Firmware/
+          find openwrt/bin/targets/ -name "*sysupgrade*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*factory*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*vmdk*" | xargs -i mv -f {} ./Firmware/
