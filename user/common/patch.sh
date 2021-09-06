@@ -14,7 +14,6 @@ do_common() {
     git clone https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/luci-theme-argon-jerrykuku
     git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus
     git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-    svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-control-webrestriction package/luci-app-control-webrestriction
 }
 
 do_lienol_common() {

@@ -29,7 +29,6 @@ Default IP: `192.168.11.1/24`, no password.
 - luci-ssl-openssl
 - luci-compat
 - luci-app-adbyby-plus
-- luci-app-control-webrestriction
 - luci-app-n2n_n2
 - luci-app-passwall
 - luci-app-smartdns
