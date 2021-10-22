@@ -263,7 +263,6 @@ jobs:
           cp ../Firmware/.config ${{matrix.target}}/
           git add .
           git commit -m "Add ${{matrix.target}} on ${{env.DATE}}"
-          git pull
           git push -f -u origin main
 
       - name: WeChat notification
