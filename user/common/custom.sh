@@ -45,6 +45,9 @@ do_common() {
         if [ -d "package/lean/luci-app-adbyby-plus" ]; then
             cp -f ../defconfig/etc/config/adbyby package/lean/luci-app-adbyby-plus/root/etc/config/adbyby
         fi
+        if [ -d "package/feeds/other/luci-app-adbyby-plus" ]; then
+            cp -f ../defconfig/etc/config/adbyby package/feeds/other/luci-app-adbyby-plus/root/etc/config/adbyby
+        fi
 
         if [ -d "package/feeds/passwall/luci-app-passwall" ]; then
             cp -f ../defconfig/etc/config/passwall package/feeds/passwall/luci-app-passwall/root/etc/config/passwall
@@ -88,6 +91,9 @@ do_common() {
         if [ -d "package/lean/luci-app-turboacc" ]; then
             cp -f ../defconfig/etc/config/turboacc package/lean/luci-app-turboacc/root/etc/config/turboacc
         fi
+        if [ -d "package/feeds/other/luci-app-turboacc" ]; then
+            cp -f ../defconfig/etc/config/turboacc package/feeds/other/luci-app-turboacc/root/etc/config/turboacc
+        fi
 
         if [ -d "package/feeds/n2n/n2n_v2" ]; then
             cp -f ../defconfig/etc/config/n2n_v2 package/feeds/n2n/n2n_v2/files/n2n_v2.config
@@ -99,6 +105,9 @@ do_common() {
 
         if [ -d "package/lean/luci-app-vlmcsd" ]; then
             cp -f ../defconfig/etc/config/vlmcsd package/lean/luci-app-vlmcsd/root/etc/config/vlmcsd
+        fi
+        if [ -d "package/feeds/other/luci-app-vlmcsd" ]; then
+            cp -f ../defconfig/etc/config/vlmcsd package/feeds/other/luci-app-vlmcsd/root/etc/config/vlmcsd
         fi
         # --------------- mini
     fi

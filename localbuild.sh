@@ -89,6 +89,9 @@ do_prepare() {
         if [ -d "package/lean/luci-app-adbyby-plus" ]; then
             clean_package package/lean/luci-app-adbyby-plus
         fi
+        if [ -d "package/feeds/other/luci-app-adbyby-plus" ]; then
+            clean_package package/feeds/other/luci-app-adbyby-plus
+        fi
 
         if [ -d "package/feeds/passwall/luci-app-passwall" ]; then
             clean_package package/feeds/passwall/luci-app-passwall
@@ -109,6 +112,9 @@ do_prepare() {
         if [ -d "package/lean/luci-app-turboacc" ]; then
             clean_package package/lean/luci-app-turboacc
         fi
+        if [ -d "package/feeds/other/luci-app-turboacc" ]; then
+            clean_package package/feeds/other/luci-app-turboacc
+        fi
 
         if [ -d "package/feeds/n2n/n2n_v2" ]; then
             clean_package package/feeds/n2n/n2n_v2
@@ -120,6 +126,9 @@ do_prepare() {
 
         if [ -d "package/lean/luci-app-vlmcsd" ]; then
             clean_package package/lean/luci-app-vlmcsd
+        fi
+        if [ -d "package/feeds/other/luci-app-vlmcsd" ]; then
+            clean_package package/feeds/other/luci-app-vlmcsd
         fi
         # --------------- mini
 
