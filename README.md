@@ -23,10 +23,9 @@ Default IP: `192.168.11.1/24`, no password.
 - dnsmasq-full
 - ipv6helper
 - kmod-vmxnet3
-- libustream-wolfssl disable
 - default-settings
 - luci
-- luci-ssl-openssl
+- luci-ssl
 - luci-compat
 - luci-app-adbyby-plus
 - luci-app-n2n_n2
