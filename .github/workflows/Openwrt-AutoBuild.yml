@@ -28,9 +28,9 @@ jobs:
       matrix:
         target:
           [
+            lede-x64,
             lienol-main-x64,
             lienol-1907-x64,
-            lede-x64,
           ]
 
     steps:
