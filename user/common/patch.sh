@@ -19,6 +19,10 @@ do_lienol_common() {
     # add custom packages
     git clone https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/luci-theme-argon-jerrykuku
     svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-ramfree package/luci-app-ramfree
+
+    # n2n_v2
+    svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-n2n_v2 package/luci-app-n2n_v2
+    svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/n2n_v2 package/n2n_v2
 }
 
 do_lede_common() {
@@ -27,8 +31,6 @@ do_lede_common() {
     svn co https://github.com/Lienol/openwrt-package/branches/other/luci-app-tcpdump package/luci-app-tcpdump
 
     # remove pkg
-    rm -rf package/lean/luci-app-n2n_v2
-    rm -rf package/lean/n2n_v2
     rm -rf package/lean/luci-app-jd-dailybonus
     rm -rf package/lean/luci-app-serverchan
 }
