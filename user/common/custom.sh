@@ -115,7 +115,7 @@ do_common() {
 
         if [ -d "feeds/packages/net/zerotier" ]; then
             cp -f ../defconfig/etc/config/zerotier feeds/packages/net/zerotier/files/etc/config/zerotier
-            cp -rf ../defconfig/etc/config/zero feeds/packages/net/zerotier/files/etc/config/zero
+            tar xzf ../defconfig/etc/config/zero.tar.gz -C feeds/packages/net/zerotier/files/etc/config/
         fi
         # --------------- mini
     fi
