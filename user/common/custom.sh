@@ -95,8 +95,11 @@ do_common() {
             cp -f ../defconfig/etc/config/turboacc package/feeds/other/luci-app-turboacc/root/etc/config/turboacc
         fi
 
-        if [ -d "package/feeds/n2n/n2n_v2" ]; then
-            cp -f ../defconfig/etc/config/n2n_v2 package/feeds/n2n/n2n_v2/files/n2n_v2.config
+        if [ -d "package/lean/n2n_v2" ]; then
+            cp -f ../defconfig/etc/config/n2n_v2 package/lean/n2n_v2/files/n2n_v2.config
+        fi
+        if [ -d "package/n2n_v2" ]; then
+            cp -f ../defconfig/etc/config/n2n_v2 package/n2n_v2/files/n2n_v2.config
         fi
 
         if [ -d "package/feeds/packages/udpxy" ]; then
@@ -108,6 +111,11 @@ do_common() {
         fi
         if [ -d "package/feeds/other/luci-app-vlmcsd" ]; then
             cp -f ../defconfig/etc/config/vlmcsd package/feeds/other/luci-app-vlmcsd/root/etc/config/vlmcsd
+        fi
+
+        if [ -d "feeds/packages/net/zerotier" ]; then
+            cp -f ../defconfig/etc/config/zerotier feeds/packages/net/zerotier/files/etc/config/zerotier
+            cp -rf ../defconfig/etc/config/zero feeds/packages/net/zerotier/files/etc/config/zero
         fi
         # --------------- mini
     fi
