@@ -101,8 +101,15 @@ do_common() {
             fi
         fi
 
-        if [ -d "package/feeds/openclash/luci-app-openclash" ]; then
-            cp -f ../defconfig/etc/config/openclash package/feeds/openclash/luci-app-openclash/root/etc/config/openclash
+        if [ -d "package/luci-app-openclash" ]; then
+            #cp -f ../defconfig/etc/config/openclash package/luci-app-openclash/root/etc/config/openclash
+            sed -i '/^config dns_servers/,$d' package/luci-app-openclash/root/etc/config/openclash
+            rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider
+            svn co https://github.com/alecthw/chnlist/branches/release/Providers package/luci-app-openclash/root/etc/openclash/rule_provider
+            mv -f package/luci-app-openclash/root/etc/openclash/rule_provider/Custom/* package/luci-app-openclash/root/etc/openclash/rule_provider
+            rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider/Custom
+            mv -f package/luci-app-openclash/root/etc/openclash/rule_provider/Ruleset/* package/luci-app-openclash/root/etc/openclash/rule_provider
+            rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider/Ruleset
         fi
 
         # --------------- mini

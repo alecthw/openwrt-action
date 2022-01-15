@@ -104,8 +104,8 @@ do_prepare() {
             clean_package package/luci-app-smartdns
         fi
 
-        if [ -d "package/feeds/openclash/luci-app-openclash" ]; then
-            clean_package package/feeds/openclash
+        if [ -d "package/luci-app-openclash" ]; then
+            clean_package package/luci-app-openclash
         fi
 
         # --------------- mini
