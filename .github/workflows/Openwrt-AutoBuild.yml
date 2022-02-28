@@ -24,14 +24,13 @@ jobs:
     name: Build ${{matrix.target}}
     strategy:
       fail-fast: false
-      max-parallel: 2
+      max-parallel: 3
       matrix:
         target:
           [
             lede-x64,
             lienol-main-x64,
             lede-openclash-x64,
-            lienol-1907-x64,
           ]
 
     steps:
