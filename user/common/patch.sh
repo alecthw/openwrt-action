@@ -29,10 +29,6 @@ do_lede_common() {
     # add custom packages
     git clone https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/luci-theme-argon-jerrykuku
     svn co https://github.com/Lienol/openwrt-package/branches/other/luci-app-tcpdump package/luci-app-tcpdump
-
-    # remove pkg
-    rm -rf package/lean/luci-app-jd-dailybonus
-    rm -rf package/lean/luci-app-serverchan
 }
 
 # excute begin

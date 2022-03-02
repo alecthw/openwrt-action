@@ -28,9 +28,9 @@ jobs:
       matrix:
         target:
           [
+            lede-openclash-x64,
             lede-x64,
             lienol-main-x64,
-            lede-openclash-x64,
           ]
 
     steps:
