@@ -1,14 +1,18 @@
 # OpenWRT Actions
 
+This is a private firmware. Firmware is encrypted!
+
+Please do not download artifact!
+
 Build OpenWRT using github actions!
 
 ![Badge](https://github.com/alecthw/openwrt-action/workflows/Openwrt-AutoBuild/badge.svg)
 
-Lienol's [code](https://github.com/Lienol/openwrt)
-
 Lean's [code](https://github.com/coolsnowwolf/lede)
 
-Default IP: `192.168.11.1/24`, no password.
+Lienol's [code](https://github.com/Lienol/openwrt)
+
+Default IP: `192.168.11.1/24`.
 
 ## Img Config
 
