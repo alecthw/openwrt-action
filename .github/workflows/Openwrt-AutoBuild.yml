@@ -164,7 +164,7 @@ jobs:
           cd openwrt
           echo -e "$(nproc) thread compile"
           make -j$(nproc) || make -j1 V=s
-          echo "name=status::success" >> $GITHUB_OUTPUT
+          echo "status=success" >> $GITHUB_OUTPUT
 
       - name: Pack packages_dir
         if: steps.compile.outputs.status == 'success'
@@ -191,7 +191,7 @@ jobs:
           find openwrt/bin/targets/ -name "*factory*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*vmdk*" | xargs -i mv -f {} ./Firmware/
           cd ./Firmware
-          zip -r -P '${{secrets.ZIP_PASSWD}}' ./${{matrix.target}}.zip ./*vmdk*
+          zip -r -P '${{secrets.ZIP_PASSWD}}' ./${{matrix.target}}.zip ./*vmdk* .config
 
       - name: Upload packages directory
         if: env.UPLOAD_PACKAGES_DIR == 'true' && env.UPLOAD_TO_ARTIFACTS == 'true' && !cancelled()　&& steps.compile.outputs.status == 'success'
