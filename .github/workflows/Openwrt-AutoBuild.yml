@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set Date
         run: |
@@ -164,7 +164,7 @@ jobs:
           cd openwrt
           echo -e "$(nproc) thread compile"
           make -j$(nproc) || make -j1 V=s
-          echo "::set-output name=status::success"
+          echo "name=status::success" >> $GITHUB_OUTPUT
 
       - name: Pack packages_dir
         if: steps.compile.outputs.status == 'success'
@@ -190,7 +190,8 @@ jobs:
           find openwrt/bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*factory*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*vmdk*" | xargs -i mv -f {} ./Firmware/
-          zip -r -P '${{secrets.ZIP_PASSWD}}' ./Firmware/${{matrix.target}}.zip ./Firmware/*
+          cd ./Firmware
+          zip -r -P '${{secrets.ZIP_PASSWD}}' ./${{matrix.target}}.zip ./*vmdk*
 
       - name: Upload packages directory
         if: env.UPLOAD_PACKAGES_DIR == 'true' && env.UPLOAD_TO_ARTIFACTS == 'true' && !cancelled()　&& steps.compile.outputs.status == 'success'
