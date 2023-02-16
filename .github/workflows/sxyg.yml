@@ -29,7 +29,7 @@ jobs:
       fail-fast: false
       # max-parallel: 2
       matrix:
-        target: [lede-openclash-x64, lede-x64]
+        target: [lede-openclash-x64]
 
     steps:
       - name: Checkout
