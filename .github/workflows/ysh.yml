@@ -1,4 +1,4 @@
-name: Openwrt-AutoBuild
+name: ysh
 
 on:
   push:
