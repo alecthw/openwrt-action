@@ -6,7 +6,8 @@ Please do not download artifact!
 
 Build OpenWRT using github actions!
 
-![Badge](https://github.com/alecthw/openwrt-action/workflows/Openwrt-AutoBuild/badge.svg)
+[![ysh](https://github.com/alecthw/openwrt-action/actions/workflows/ysh.yml/badge.svg)](https://github.com/alecthw/openwrt-action/actions/workflows/ysh.yml)
+[![sxyg](https://github.com/alecthw/openwrt-action/actions/workflows/sxyg.yml/badge.svg)](https://github.com/alecthw/openwrt-action/actions/workflows/sxyg.yml)
 
 Lean's [code](https://github.com/coolsnowwolf/lede)
 
