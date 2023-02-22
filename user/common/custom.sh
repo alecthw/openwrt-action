@@ -48,8 +48,8 @@ do_common() {
             cp -f ../defconfig/etc/config/nginx package/feeds/packages/nginx-util/files/nginx.config
         fi
 
-        if [ -d "package/lean/luci-app-adbyby-plus" ]; then
-            cp -f ../defconfig/etc/config/adbyby package/lean/luci-app-adbyby-plus/root/etc/config/adbyby
+        if [ -d "package/feeds/luci/luci-app-adbyby-plus" ]; then
+            cp -f ../defconfig/etc/config/adbyby package/feeds/luci/luci-app-adbyby-plus/root/etc/config/adbyby
         fi
         if [ -d "package/feeds/other/luci-app-adbyby-plus" ]; then
             cp -f ../defconfig/etc/config/adbyby package/feeds/other/luci-app-adbyby-plus/root/etc/config/adbyby
@@ -116,26 +116,26 @@ do_common() {
         # --------------- mini
         cp -f ../defconfig/etc/hosts package/base-files/files/etc/hosts
 
-        if [ -d "package/lean/luci-app-turboacc" ]; then
-            cp -f ../defconfig/etc/config/turboacc package/lean/luci-app-turboacc/root/etc/config/turboacc
+        if [ -d "package/feeds/luci/luci-app-turboacc" ]; then
+            cp -f ../defconfig/etc/config/turboacc package/feeds/luci/luci-app-turboacc/root/etc/config/turboacc
         fi
         if [ -d "package/feeds/other/luci-app-turboacc" ]; then
             cp -f ../defconfig/etc/config/turboacc package/feeds/other/luci-app-turboacc/root/etc/config/turboacc
         fi
 
-        if [ -d "package/lean/n2n_v2" ]; then
-            cp -f ../defconfig/etc/config/n2n_v2 package/lean/n2n_v2/files/n2n_v2.config
+        if [ -d "package/feeds/packages/n2n" ]; then
+            cp -f ../defconfig/etc/config/n2n package/feeds/packages/n2n/files/n2n.config
         fi
-        if [ -d "package/n2n_v2" ]; then
-            cp -f ../defconfig/etc/config/n2n_v2 package/n2n_v2/files/n2n_v2.config
+        if [ -d "package/n2n" ]; then
+            cp -f ../defconfig/etc/config/n2n package/n2n/files/n2n.config
         fi
 
         if [ -d "package/feeds/packages/udpxy" ]; then
             cp -f ../defconfig/etc/config/udpxy package/feeds/packages/udpxy/files/udpxy.conf
         fi
 
-        if [ -d "package/lean/luci-app-vlmcsd" ]; then
-            cp -f ../defconfig/etc/config/vlmcsd package/lean/luci-app-vlmcsd/root/etc/config/vlmcsd
+        if [ -d "package/feeds/luci/luci-app-vlmcsd" ]; then
+            cp -f ../defconfig/etc/config/vlmcsd package/feeds/luci/luci-app-vlmcsd/root/etc/config/vlmcsd
         fi
         if [ -d "package/feeds/other/luci-app-vlmcsd" ]; then
             cp -f ../defconfig/etc/config/vlmcsd package/feeds/other/luci-app-vlmcsd/root/etc/config/vlmcsd
