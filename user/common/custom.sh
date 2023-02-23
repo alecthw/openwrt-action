@@ -103,7 +103,7 @@ do_common() {
 
         if [ -d "package/luci-app-openclash" ]; then
             cp -f ../defconfig/etc/config/openclash package/luci-app-openclash/root/etc/config/openclash
-            sed -i '/^config dns_servers/,$d' package/luci-app-openclash/root/etc/config/openclash
+            # sed -i '/^config dns_servers/,$d' package/luci-app-openclash/root/etc/config/openclash
             rm -rf package/luci-app-openclash/.svn
             rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider
             svn co https://github.com/alecthw/chnlist/branches/release/Providers package/luci-app-openclash/root/etc/openclash/rule_provider
