@@ -105,6 +105,7 @@ do_common() {
             cp -f ../defconfig/etc/config/openclash package/luci-app-openclash/root/etc/config/openclash
             # sed -i '/^config dns_servers/,$d' package/luci-app-openclash/root/etc/config/openclash
 
+            mkdir -p package/luci-app-openclash/root/etc/openclash/config
             cp -f ../defconfig/etc/openclash/config/OpenClash.yaml package/luci-app-openclash/root/etc/openclash/config/OpenClash.yaml
 
             # update geosite
