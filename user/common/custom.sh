@@ -105,6 +105,13 @@ do_common() {
             cp -f ../defconfig/etc/config/openclash package/luci-app-openclash/root/etc/config/openclash
             # sed -i '/^config dns_servers/,$d' package/luci-app-openclash/root/etc/config/openclash
 
+            cp -f ../defconfig/etc/openclash/config/OpenClash.yaml package/luci-app-openclash/root/etc/openclash/config/OpenClash.yaml
+
+            # update geosite
+            rm -rf package/luci-app-openclash/root/etc/openclash/GeoSite.dat
+            curl -kL --retry 3 --connect-timeout 3 -o package/luci-app-openclash/root/etc/openclash/GeoSite.dat https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
+
+            # download rule provider files
             rm -rf package/luci-app-openclash/.svn
             rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider
             svn co https://github.com/blackmatrix7/ios_rule_script/trunk/rule/Clash package/luci-app-openclash/root/etc/openclash/rule_provider/rules
