@@ -101,6 +101,9 @@ do_common() {
             fi
         fi
 
+        # --------------- mini
+        cp -f ../defconfig/etc/hosts package/base-files/files/etc/hosts
+
         if [ -d "package/luci-app-openclash" ]; then
             cp -f ../defconfig/etc/config/openclash package/luci-app-openclash/root/etc/config/openclash
             # sed -i '/^config dns_servers/,$d' package/luci-app-openclash/root/etc/config/openclash
@@ -124,8 +127,23 @@ do_common() {
             rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider/.svn
         fi
 
-        # --------------- mini
-        cp -f ../defconfig/etc/hosts package/base-files/files/etc/hosts
+        if [ -d "package/feeds/luci/luci-app-mosdns" ]; then
+            cp -f ../defconfig/etc/config/mosdns package/feeds/luci/luci-app-mosdns/root/etc/config/mosdns
+
+            cp -f ../defconfig/etc/mosdns/cus_config.yaml package/feeds/luci/luci-app-mosdns/root/etc/mosdns/cus_config.yaml
+            cp -f ../defconfig/etc/mosdns/update_rules.sh package/feeds/luci/luci-app-mosdns/root/etc/mosdns/update_rules.sh
+
+            git clone --depth=1 -b release https://github.com/Loyalsoldier/v2ray-rules-dat.git /tmp/mosdns_rules
+            rm -rf /tmp/mosdns_rules/.git /tmp/mosdns_rules/rules.zip /tmp/mosdns_rules/*.sha256sum
+
+            curl -o /tmp/mosdns_rules/geoip_cn.txt https://raw.githubusercontent.com/QiuSimons/openwrt-mos/master/dat/geoip_cn.txt
+            curl -o /tmp/mosdns_rules/Country.mmdb https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/Country.mmdb
+            curl -o /tmp/mosdns_rules/whitelist.list https://raw.githubusercontent.com/alecthw/chnlist/release/mosdns/whitelist.list
+
+            chmod 640 /tmp/mosdns_rules/*
+
+            mv -f /tmp/mosdns_rules package/feeds/luci/luci-app-mosdns/root/etc/mosdns/rules
+        fi
 
         if [ -d "package/feeds/luci/luci-app-turboacc" ]; then
             cp -f ../defconfig/etc/config/turboacc package/feeds/luci/luci-app-turboacc/root/etc/config/turboacc
