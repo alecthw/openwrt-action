@@ -88,6 +88,10 @@ if [ -d "../defconfig" ]; then
         rm -rf package/luci-app-openclash/root/etc/openclash/GeoSite.dat
         curl -kL --retry 3 --connect-timeout 3 -o package/luci-app-openclash/root/etc/openclash/GeoSite.dat https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 
+        # update mmdb
+        rm -rf package/luci-app-openclash/root/etc/openclash/Country.mmdb
+        curl -kL --retry 3 --connect-timeout 3 -o package/luci-app-openclash/root/etc/openclash/Country.mmdb https://testingcf.jsdelivr.net/gh/alecthw/mmdb_china_ip_list@release/Country.mmdb
+
         # download rule provider files
         rm -rf package/luci-app-openclash/.svn
         rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider
@@ -103,20 +107,15 @@ if [ -d "../defconfig" ]; then
     if [ -d "package/feeds/luci/luci-app-mosdns" ]; then
         cp -f ../defconfig/etc/config/mosdns package/feeds/luci/luci-app-mosdns/root/etc/config/mosdns
 
+        # copy config
         cp -f ../defconfig/etc/mosdns/cus_config.yaml package/feeds/luci/luci-app-mosdns/root/etc/mosdns/cus_config.yaml
         cp -f ../defconfig/etc/mosdns/update_rules.sh package/feeds/luci/luci-app-mosdns/root/etc/mosdns/update_rules.sh
         chomd 755 package/feeds/luci/luci-app-mosdns/root/etc/mosdns/update_rules.sh
 
-        git clone --depth=1 -b release https://github.com/Loyalsoldier/v2ray-rules-dat.git /tmp/mosdns_rules
-        rm -rf /tmp/mosdns_rules/.git /tmp/mosdns_rules/rules.zip /tmp/mosdns_rules/*.sha256sum
-
-        curl -o /tmp/mosdns_rules/geoip_cn.txt https://raw.githubusercontent.com/QiuSimons/openwrt-mos/master/dat/geoip_cn.txt
-        curl -o /tmp/mosdns_rules/Country.mmdb https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/Country.mmdb
-        curl -o /tmp/mosdns_rules/whitelist.list https://raw.githubusercontent.com/alecthw/chnlist/release/mosdns/whitelist.list
-
-        chmod 640 /tmp/mosdns_rules/*
-
-        mv -f /tmp/mosdns_rules package/feeds/luci/luci-app-mosdns/root/etc/mosdns/rules
+        # download rules
+        curl -kL --retry 3 --connect-timeout 3 -o package/feeds/luci/luci-app-mosdns/root/etc/mosdns/rule/reject-list.txt https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/reject-list.txt
+        curl -kL --retry 3 --connect-timeout 3 -o package/feeds/luci/luci-app-mosdns/root/etc/mosdns/rule/cn-white.txt https://raw.githubusercontent.com/alecthw/chnlist/release/mosdns/whitelist.list
+        curl -kL --retry 3 --connect-timeout 3 -o package/feeds/luci/luci-app-mosdns/root/etc/mosdns/rule/Country.mmdb https://raw.githubusercontent.com/alecthw/mmdb_china_ip_list/release/Country.mmdb
     fi
 
     if [ -d "package/feeds/luci/luci-app-turboacc" ]; then
