@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Execute after install feeds
+# patch -> [update & install feeds] -> custom -> config
 
 echo "Execute custom custom.sh"
 

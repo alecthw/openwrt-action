@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Execute before update feeds
+# patch -> [update & install feeds] -> custom -> config
 
 echo "Execute custom patch.sh"
 

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Execute before update feeds
+# patch -> [update & install feeds] -> custom -> config
 
 target=$1
 echo "Execute common patch.sh ${target}"
