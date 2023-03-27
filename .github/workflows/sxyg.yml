@@ -40,7 +40,7 @@ jobs:
                   date=$(date +%Y-%m-%d)
                   echo "DATE=${date}" >> $GITHUB_ENV
 
-            - name: Initialization environment
+            - name: Initialize environment
               env:
                   DEBIAN_FRONTEND: noninteractive
               run: |
@@ -115,7 +115,7 @@ jobs:
             - name: Install feeds
               run: cd openwrt && ./scripts/feeds install -a
 
-            - name: Load custom configuration
+            - name: Load custom script
               run: |
                   echo "Apply files..."
                   if [ -n "$(ls -A "user/common/files" 2>/dev/null)" ]; then
@@ -143,7 +143,7 @@ jobs:
                   )
                   fi
 
-            - name: Load config
+            - name: Load custom configuration
               run: |
                   echo "Apply config.sh"
                   if [ -f "user/common/config.sh" ]; then
@@ -153,7 +153,12 @@ jobs:
                   )
                   fi
 
-            - name: Copy config
+            - name: Modify hostname
+              run: |
+                  cd openwrt
+                  sed -i "s/hostname='OpenWrt'/hostname='OpenWrt-sxyg'/g" package/base-files/files/bin/config_generate
+
+            - name: Copy build config
               id: config
               run: |
                   cd openwrt
