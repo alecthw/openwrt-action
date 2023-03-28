@@ -12,23 +12,30 @@ echo "Source: ${source}"
 
 do_common() {
     # add custom packages
+    rm -rf package/luci-theme-argon-jerrykuku
+    git clone https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/luci-theme-argon-jerrykuku
+
+    rm -rf package/luci-app-jd-dailybonus
     git clone https://github.com/jerrykuku/luci-app-jd-dailybonus.git package/luci-app-jd-dailybonus
+
+    rm -rf package/luci-app-serverchan
     git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
 }
 
 do_lienol_common() {
     # add custom packages
-    git clone https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/luci-theme-argon-jerrykuku
+    rm -rf package/luci-app-ramfree
     svn co https://github.com/Lienol/openwrt-package/trunk/luci-app-ramfree package/luci-app-ramfree
 
     # n2n_v2
+    rm -rf package/luci-app-n2n package/n2n
     svn co https://github.com/coolsnowwolf/luci/trunk/applications/luci-app-n2n package/luci-app-n2n
     svn co https://github.com/coolsnowwolf/packages/trunk/net/n2n package/n2n
 }
 
 do_lede_common() {
     # add custom packages
-    git clone https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/luci-theme-argon-jerrykuku
+    rm -rf package/luci-app-tcpdump
     svn co https://github.com/Lienol/openwrt-package/branches/other/luci-app-tcpdump package/luci-app-tcpdump
 }
 

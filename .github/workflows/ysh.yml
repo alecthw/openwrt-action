@@ -73,13 +73,13 @@ jobs:
               env:
                   REPO_URL: https://${{github.actor}}:${{secrets.SUPER_TOKEN}}@github.com/alecthw/archive.git
               run: |
-                  git clone $REPO_URL
+                  git clone --depth=1 $REPO_URL
                   rm -rf defconfig
                   cp -rf archive/home/defconfig defconfig
 
             - name: Clone source code
               run: |
-                  git clone ${{env.REPO_URL}} -b ${{env.REPO_BRANCH}} openwrt
+                  git clone --depth=1 -b ${{env.REPO_BRANCH}} ${{env.REPO_URL}} openwrt
 
             - name: Apply patches
               run: |
