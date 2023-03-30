@@ -17,7 +17,9 @@ do_common() {
 }
 
 do_official_common() {
-    echo ""
+    # add custom packages
+    rm -rf package/luci-theme-argon-jerrykuku
+    git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
 }
 
 do_lede_common() {

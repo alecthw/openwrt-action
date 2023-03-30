@@ -83,6 +83,9 @@ do_prepare() {
         echo "Info: Clean feeds..."
         ./scripts/feeds clean -a
 
+        # clean tmp
+        rm -rf tmp .config
+
         # clean code
         echo "Info: Clean custom package..."
         git clean -fd
