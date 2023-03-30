@@ -6,17 +6,14 @@
 target=$1
 echo "Execute common patch.sh ${target}"
 
-array=(${target//-/ })
-source=${array[0]}
-echo "Source: ${source}"
+target_array=(${target//-/ })
+build_source=${target_array[0]}
+build_type=${target_array[1]}
+build_arch=${target_array[2]}
+echo "source=${build_source}, type=${build_type}, arch=${build_arch}"
 
 do_common() {
-    # add custom packages
-    rm -rf package/luci-theme-argon-jerrykuku
-    git clone https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/luci-theme-argon-jerrykuku
-
-    rm -rf package/luci-app-serverchan
-    git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+    echo ""
 }
 
 do_official_common() {
@@ -25,6 +22,9 @@ do_official_common() {
 
 do_lede_common() {
     # add custom packages
+    rm -rf package/luci-theme-argon-jerrykuku
+    git clone https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/luci-theme-argon-jerrykuku
+
     rm -rf package/luci-app-tcpdump
     svn co https://github.com/Lienol/openwrt-package/branches/other/luci-app-tcpdump package/luci-app-tcpdump
 }
@@ -32,7 +32,7 @@ do_lede_common() {
 # excute begin
 do_common
 
-case "${source}" in
+case "${build_source}" in
 official)
     echo "do official"
     do_official_common
@@ -42,6 +42,6 @@ lede)
     do_lede_common
     ;;
 *)
-    echo "Unknow ${source}!"
+    echo "Unknow ${build_source}!"
     ;;
 esac

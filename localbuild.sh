@@ -38,17 +38,17 @@ init_code_dir() {
     source ${CUR_PATH}/user/${target}/settings.ini
 
     case "${target}" in
-    lede-x64)
-        code_dir="lede"
+    lede-passwall-x64)
+        code_dir="lede-passwall"
         ;;
     lede-openclash-x64)
         code_dir="lede_openclash"
         ;;
-    official-x64)
-        code_dir="official"
+    official-passwall-x64)
+        code_dir="official-passwall"
         ;;
-    lede-newifi_d2 | lede-wrt1900acs | lede-r2s)
-        code_dir="lede_device"
+    official-openclash-x64)
+        code_dir="official_openclash"
         ;;
     *)
         error "Unknow ${target}!" 2

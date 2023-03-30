@@ -6,9 +6,11 @@
 target=$1
 echo "Execute common custom.sh ${target}"
 
-array=(${target//-/ })
-source=${array[0]}
-echo "source=${source}"
+target_array=(${target//-/ })
+build_source=${target_array[0]}
+build_type=${target_array[1]}
+build_arch=${target_array[2]}
+echo "source=${build_source}, type=${build_type}, arch=${build_arch}"
 
 do_common() {
     # modify passwall subscribe.lua
@@ -49,7 +51,7 @@ do_lede_common() {
 # excute begin
 do_common
 
-case "${source}" in
+case "${build_source}" in
 official)
     echo "do official"
     do_official_common
@@ -59,6 +61,6 @@ lede)
     do_lede_common
     ;;
 *)
-    echo "Unknow ${source}!"
+    echo "Unknow ${build_source}!"
     ;;
 esac
