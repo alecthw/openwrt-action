@@ -104,20 +104,11 @@ do_prepare() {
     if [ -n "$(ls -A "user/${target}/patches" 2>/dev/null)" ]; then
         find "user/${target}/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d '${code_dir}' -p0 --forward"
     fi
-    # apply patch.sh
-    echo "Info: Apply patch.sh..."
-    cd ${CUR_PATH}/${code_dir}
-    if [ -f "../user/common/patch.sh" ]; then
-        /bin/bash "../user/common/patch.sh" ${target}
-    fi
-    if [ -f "../user/${target}/patch.sh" ]; then
-        /bin/bash "../user/${target}/patch.sh"
-    fi
 
-    # --------------------- Update & Install feeds
+    # --------------------- Update feeds
     echo "Info: Update feeds..."
     cd ${CUR_PATH}/${code_dir}
-    ./scripts/feeds update -a && ./scripts/feeds install -a
+    ./scripts/feeds update -a
 
     # --------------------- Load custom script
     # apply files...
@@ -140,6 +131,11 @@ do_prepare() {
     if [ -f "../user/${target}/custom.sh" ]; then
         /bin/bash "../user/${target}/custom.sh"
     fi
+
+    # --------------------- Install feeds
+    echo "Info: Update feeds..."
+    cd ${CUR_PATH}/${code_dir}
+    ./scripts/feeds update -a && ./scripts/feeds install -a
 
     # --------------------- Load custom configuration
     echo "Apply config.sh"
