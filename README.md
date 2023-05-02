@@ -13,8 +13,6 @@ Lean's [code](https://github.com/coolsnowwolf/lede)
 
 Lienol's [code](https://github.com/Lienol/openwrt)
 
-Default IP: `192.168.11.1/24`.
-
 ## Img Config
 
 - Disable ext4 img
