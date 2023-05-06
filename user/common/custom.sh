@@ -34,7 +34,7 @@ do_lede_common() {
 
     # add luci-app-tcpdump
     rm -rf package/luci-app-tcpdump
-    svn co https://github.com/Lienol/openwrt-package/branches/other/luci-app-tcpdump package/luci-app-tcpdump
+    svn co -q https://github.com/Lienol/openwrt-package/branches/other/luci-app-tcpdump package/luci-app-tcpdump
 }
 
 # excute begin

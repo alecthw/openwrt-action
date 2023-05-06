@@ -115,12 +115,12 @@ if [ -d "../defconfig" ]; then
         # download rule provider files
         rm -rf package/luci-app-openclash/.svn
         rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider
-        svn co https://github.com/blackmatrix7/ios_rule_script/trunk/rule/Clash package/luci-app-openclash/root/etc/openclash/rule_provider/rules
+        svn co -q https://github.com/blackmatrix7/ios_rule_script/trunk/rule/Clash package/luci-app-openclash/root/etc/openclash/rule_provider/rules
         rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider/rules/.svn
         mv -f package/luci-app-openclash/root/etc/openclash/rule_provider/rules/**/*.yaml package/luci-app-openclash/root/etc/openclash/rule_provider
         rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider/rules
 
-        svn co https://github.com/alecthw/chnlist/branches/release/Providers/Custom package/luci-app-openclash/root/etc/openclash/rule_provider
+        svn co -q https://github.com/alecthw/chnlist/branches/release/Providers/Custom package/luci-app-openclash/root/etc/openclash/rule_provider
         rm -rf package/luci-app-openclash/root/etc/openclash/rule_provider/.svn
     fi
 
