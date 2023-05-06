@@ -19,7 +19,7 @@ do_common() {
 do_official_common() {
     # add luci-theme-argon-jerrykuku
     rm -rf package/luci-theme-argon-jerrykuku
-    git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
+    git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon-jerrykuku
 }
 
 do_lede_common() {
@@ -30,7 +30,7 @@ do_lede_common() {
 
     # add luci-theme-argon-jerrykuku
     rm -rf package/luci-theme-argon-jerrykuku
-    git clone https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/luci-theme-argon-jerrykuku
+    git clone --depth=1 https://github.com/jerrykuku/luci-theme-argon.git -b 18.06 package/luci-theme-argon-jerrykuku
 
     # add luci-app-tcpdump
     rm -rf package/luci-app-tcpdump

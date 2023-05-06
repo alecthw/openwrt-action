@@ -11,7 +11,7 @@ svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/l
 
 # add luci-app-smartdns
 rm -rf package/luci-app-smartdns
-git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
+git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
 
 # replace smartdns
 rm -rf feeds/packages/net/smartdns
