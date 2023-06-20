@@ -35,6 +35,10 @@ do_lede_common() {
     # add luci-app-tcpdump
     rm -rf package/luci-app-tcpdump
     svn co -q https://github.com/Lienol/openwrt-package/branches/other/luci-app-tcpdump package/luci-app-tcpdump
+
+    # replace open-vm-tools
+    rm -rf feeds/packages/utils/open-vm-tools
+    svn co -q https://github.com/openwrt/packages/trunk/utils/open-vm-tools feeds/packages/utils/open-vm-tools
 }
 
 # excute begin

@@ -103,7 +103,7 @@ jobs:
       - name: Update feeds
         run: cd openwrt && ./scripts/feeds update -a
 
-      - name: Load custom script
+      - name: Copy custom files
         run: |
           echo "Apply files..."
           if [ -n "$(ls -A "user/common/files" 2>/dev/null)" ]; then
@@ -117,16 +117,17 @@ jobs:
           )
           fi
 
+      - name: Load custom script
+        run: |
           echo "Apply custom.sh"
-          if [ -f "user/common/custom.sh" ]; then
+          cd openwrt
+          if [ -f "../user/common/custom.sh" ]; then
           (
-            cd openwrt
             /bin/bash "../user/common/custom.sh" ${{matrix.target}}
           )
           fi
-          if [ -f "user/${{matrix.target}}/custom.sh" ]; then
+          if [ -f "../user/${{matrix.target}}/custom.sh" ]; then
           (
-            cd openwrt
             /bin/bash "../user/${{matrix.target}}/custom.sh"
           )
           fi
@@ -137,9 +138,9 @@ jobs:
       - name: Load custom configuration
         run: |
           echo "Apply config.sh"
-          if [ -f "user/common/config.sh" ]; then
+          cd openwrt
+          if [ -f "../user/common/config.sh" ]; then
           (
-            cd openwrt
             /bin/bash "../user/common/config.sh" ${{matrix.target}}
           )
           fi
