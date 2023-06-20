@@ -9,6 +9,7 @@ echo "Execute custom custom.sh"
 rm -rf package/luci-app-openclash
 svn co -q https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 # download latest clash meta core
+mkdir -p package/luci-app-openclash/root/etc/openclash/core
 clash_meta_version=$(curl -kLs "https://api.github.com/repos/MetaCubeX/Clash.Meta/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
 echo "clash_meta_version: ${clash_meta_version}"
 curl -kL --retry 3 --connect-timeout 3 -o package/luci-app-openclash/root/etc/openclash/core/clash_meta.gz https://github.com/MetaCubeX/Clash.Meta/releases/latest/download/clash.meta-linux-amd64-compatible-${clash_meta_version}.gz
