@@ -16,9 +16,9 @@ curl -kL --retry 3 --connect-timeout 3 -o package/luci-app-openclash/root/etc/op
 gzip -d package/luci-app-openclash/root/etc/openclash/core/clash_meta.gz
 chmod 755 package/luci-app-openclash/root/etc/openclash/core/clash_meta
 
-# add luci-app-smartdns
-rm -rf package/luci-app-smartdns
-git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
+# replace luci-app-smartdns
+rm -rf feeds/luci/applications/luci-app-smartdns
+git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns.git feeds/luci/applications/luci-app-smartdns
 
 # replace smartdns
 rm -rf feeds/packages/net/smartdns
