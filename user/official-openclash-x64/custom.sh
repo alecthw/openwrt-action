@@ -32,7 +32,7 @@ svn co -q https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns package
 rm -rf feeds/packages/net/mosdns
 svn co -q https://github.com/QiuSimons/openwrt-mos/trunk/mosdns feeds/packages/net/mosdns
 # use fork repo before PR accepted
-sed -i 's/^PKG_VERSION.*/PKG_VERSION:=2f1bfed/g' feeds/packages/net/mosdns/Makefile
+sed -i 's/^PKG_VERSION.*/PKG_VERSION:=fa4996c/g' feeds/packages/net/mosdns/Makefile
 sed -i 's#IrineSistiana/mosdns/tar#alecthw/mosdns/tar#g' feeds/packages/net/mosdns/Makefile
 
 # add luci-app-zerotier
