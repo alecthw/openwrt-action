@@ -16,23 +16,4 @@ curl -kL --retry 3 --connect-timeout 3 -o package/luci-app-openclash/root/etc/op
 gzip -d package/luci-app-openclash/root/etc/openclash/core/clash_meta.gz
 chmod 755 package/luci-app-openclash/root/etc/openclash/core/clash_meta
 
-# replace luci-app-smartdns
-rm -rf feeds/luci/applications/luci-app-smartdns
-git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns.git feeds/luci/applications/luci-app-smartdns
-
-# replace smartdns
-rm -rf feeds/packages/net/smartdns
-svn co -q https://github.com/Lienol/openwrt-packages/branches/master/net/smartdns feeds/packages/net/smartdns
-
-# replace luci-app-mosdns
-rm -rf feeds/luci/applications/luci-app-mosdns
-svn co -q https://github.com/QiuSimons/openwrt-mos/trunk/luci-app-mosdns feeds/luci/applications/luci-app-mosdns
-
-# replace mosdns
-rm -rf feeds/packages/net/mosdns
-svn co -q https://github.com/QiuSimons/openwrt-mos/trunk/mosdns feeds/packages/net/mosdns
-# use fork repo before PR accepted
-sed -i 's/^PKG_VERSION.*/PKG_VERSION:=fa4996c/g' feeds/packages/net/mosdns/Makefile
-sed -i 's#IrineSistiana/mosdns/tar#alecthw/mosdns/tar#g' feeds/packages/net/mosdns/Makefile
-
 cat package/lean/default-settings/files/zzz-default-settings
