@@ -93,6 +93,16 @@ if [ -d "../defconfig" ]; then
     # --------------- mini
     cp -f ../defconfig/etc/hosts package/base-files/files/etc/hosts
 
+    if [ -d "package/luci-app-adguardhome" ]; then
+        cp -f ../defconfig/etc/config/AdGuardHome package/luci-app-adguardhome/root/etc/config/AdGuardHome
+        cp -rf ../defconfig/etc/AdGuardHome package/luci-app-adguardhome/root/etc/AdGuardHome
+
+        # download latest adguardhome core
+        curl -kL --retry 3 --connect-timeout 3 -o package/luci-app-adguardhome/root/etc/AdGuardHome.tar.gz https://github.com/AdguardTeam/AdGuardHome/releases/latest/download/AdGuardHome_linux_amd64.tar.gz
+        tar xzf package/luci-app-adguardhome/root/etc/AdGuardHome.tar.gz -C package/luci-app-adguardhome/root/etc/
+        rm -rf package/luci-app-adguardhome/root/etc/AdGuardHome.tar.gz
+    fi
+
     if [ -d "package/luci-app-openclash" ]; then
         cp -f ../defconfig/etc/config/openclash package/luci-app-openclash/root/etc/config/openclash
         # sed -i '/^config dns_servers/,$d' package/luci-app-openclash/root/etc/config/openclash

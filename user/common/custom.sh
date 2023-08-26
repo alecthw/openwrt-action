@@ -13,6 +13,10 @@ build_arch=${target_array[2]}
 echo "source=${build_source}, type=${build_type}, arch=${build_arch}"
 
 do_common() {
+    # add luci-app-adguardhome
+    rm -rf package/luci-app-adguardhome
+    svn co -q https://github.com/Lienol/openwrt-package/branches/other/luci-app-adguardhome package/luci-app-adguardhome
+
     # replace luci-app-smartdns
     rm -rf feeds/luci/applications/luci-app-smartdns
     git clone --depth=1 -b lede https://github.com/pymumu/luci-app-smartdns.git feeds/luci/applications/luci-app-smartdns
