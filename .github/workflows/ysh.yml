@@ -206,7 +206,9 @@ jobs:
           rm -rf ./Firmware/
           mkdir -p ./Firmware/
           ls -l openwrt/bin/targets/*/*
-          cp -f openwrt/.config ./Firmware/
+          cp -f openwrt/.config ./Firmware/config
+          find openwrt/bin/targets/ -name "*.buildinfo" | xargs -i mv -f {} ./Firmware/
+          find openwrt/bin/targets/ -name "sha256sums" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*sysupgrade*bin*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*sysupgrade*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./Firmware/
@@ -214,7 +216,7 @@ jobs:
           find openwrt/bin/targets/ -name "*vmdk*" | xargs -i mv -f {} ./Firmware/
           ls -l ./Firmware
           cd ./Firmware
-          zip -r -P '${{secrets.ZIP_PASSWD}}' ./${{matrix.target}}.zip ./*vmdk* .config
+          zip -r -P '${{secrets.ZIP_PASSWD}}' ./${{matrix.target}}.zip ./*vmdk* config
 
       - name: Upload packages directory
         if: env.UPLOAD_PACKAGES_DIR == 'true' && env.UPLOAD_TO_ARTIFACTS == 'true' && !cancelled() && steps.compile.outputs.status == 'success'
@@ -241,13 +243,13 @@ jobs:
         if: env.UPLOAD_FIRMWARE == 'true' && env.UPLOAD_TO_RELEASE == 'true' && !cancelled() && steps.compile.outputs.status == 'success'
         uses: ncipollo/release-action@v1
         with:
-          name: R${{ env.DATE }} for ysh
+          name: R${{ env.DATE }} for ysh:${{matrix.target}}
           allowUpdates: true
           removeArtifacts: true
-          tag: ysh
+          tag: ysh:${{matrix.target}}
           commit: main
           token: ${{ secrets.PERSONAL_TOKEN }}
-          artifacts: ./Firmware/${{matrix.target}}.zip,./Firmware/.config
+          artifacts: ./Firmware/${{matrix.target}}.zip,./Firmware/config,./Firmware/*.buildinfo,./Firmware/sha256sums
           body: |
             - This is a private firmware. Firmware is encrypted!
             - Please do not download!
