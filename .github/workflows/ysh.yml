@@ -205,14 +205,15 @@ jobs:
         run: |
           rm -rf ./Firmware/
           mkdir -p ./Firmware/
+          ls -l openwrt/bin/targets/*/*
           cp -f openwrt/.config ./Firmware/
           find openwrt/bin/targets/ -name "*sysupgrade*bin*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*sysupgrade*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*factory*img*" | xargs -i mv -f {} ./Firmware/
           find openwrt/bin/targets/ -name "*vmdk*" | xargs -i mv -f {} ./Firmware/
+          ls -l ./Firmware
           cd ./Firmware
-          ls -l
           zip -r -P '${{secrets.ZIP_PASSWD}}' ./${{matrix.target}}.zip ./*vmdk* .config
 
       - name: Upload packages directory
