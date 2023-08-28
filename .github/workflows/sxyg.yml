@@ -246,7 +246,7 @@ jobs:
           name: R${{ env.DATE }} for sxyg:${{matrix.target}}
           allowUpdates: true
           removeArtifacts: true
-          tag: sxyg${{matrix.target}}
+          tag: sxyg_${{matrix.target}}
           commit: main
           token: ${{ secrets.PERSONAL_TOKEN }}
           artifacts: ./Firmware/${{matrix.target}}.zip,./Firmware/config,./Firmware/*.buildinfo,./Firmware/sha256sums

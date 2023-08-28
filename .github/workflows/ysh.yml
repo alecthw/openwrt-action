@@ -246,7 +246,7 @@ jobs:
           name: R${{ env.DATE }} for ysh:${{matrix.target}}
           allowUpdates: true
           removeArtifacts: true
-          tag: ysh:${{matrix.target}}
+          tag: ysh_${{matrix.target}}
           commit: main
           token: ${{ secrets.PERSONAL_TOKEN }}
           artifacts: ./Firmware/${{matrix.target}}.zip,./Firmware/config,./Firmware/*.buildinfo,./Firmware/sha256sums
