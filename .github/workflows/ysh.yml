@@ -6,7 +6,7 @@ on:
     - cron: 0 20 * * 2,5
   # push:
   #   branches:
-  #     - main
+  #     - master
   #   paths:
   #     - "start"
   # release:
@@ -247,7 +247,7 @@ jobs:
           allowUpdates: true
           removeArtifacts: true
           tag: ysh_${{matrix.target}}
-          commit: main
+          commit: master
           token: ${{ secrets.PERSONAL_TOKEN }}
           artifacts: ./Firmware/${{matrix.target}}.zip,./Firmware/config,./Firmware/*.buildinfo,./Firmware/sha256sums
           body: |
@@ -267,4 +267,4 @@ jobs:
       #     cp ../Firmware/.config ${{matrix.target}}/
       #     git add .
       #     git commit -m "Add ${{matrix.target}} on ${{env.DATE}}"
-      #     git push -f -u origin main
+      #     git push -f -u origin master
