@@ -14,7 +14,7 @@ echo "source=${build_source}, type=${build_type}, arch=${build_arch}"
 
 # copy default config
 if [ -d "../defconfig" ]; then
-    cp -f ../defconfig/zzz-extra-settings package/base-files/files/etc/uci-defaults/zzzz-extra-settings
+    cp -f ../defconfig/etc/uci-defaults/zzzz-extra-settings package/base-files/files/etc/uci-defaults/zzzz-extra-settings
 
     if [ "${build_type}" != "openclash" ]; then
         cp -f ../defconfig/etc/firewall.user package/network/config/firewall/files/firewall.user
